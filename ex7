@@ -1,0 +1,29 @@
+import networkx as nx
+import matplotlib.pyplot as plt
+from networkx.algorithms import community
+from networkx.algorithms.community import greedy_modularity_communities
+
+
+Data = open('/Users/elif/Downloads/wikipedia/chameleon/musae_chameleon_edges.csv', "r")
+next(Data, None)
+Graphtype = nx.Graph()
+
+
+print(' number of edges =' , Graphtype.number_of_edges())
+print(' number of nodes =' ,Graphtype.number_of_nodes())
+
+#Applying the fastgreedy algorithm
+
+G = nx.barbell_graph(2,10)
+communities_generator = community.girvan_newman(G)
+top_level_communities = next(communities_generator)
+next_level_communities = next(communities_generator)
+print(sorted(map(sorted, next_level_communities)))
+
+## greedy module
+G = nx.karate_club_graph()
+greedy_modularity_communities(G)
+nx.draw(G, nodecolor='r', node_color='blue', edge_color='k', with_labels=True, font_weight='light', node_size=280, width=0.9)
+plt.show()
+c=sorted(greedy_modularity_communities(G))
+print(c)

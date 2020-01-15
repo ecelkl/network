@@ -1,0 +1,5 @@
+import jgraph as ig
+g = ig.Graph.Read_Ncol('/Users/elif/Downloads/wikipedia/chameleon/musae_chameleon_edges.csv')
+
+print('number of nodes: '+ str(len(g.vs())))
+print('number of edges: '+ str(len(g.es())))
